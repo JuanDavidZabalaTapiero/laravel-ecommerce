@@ -17,14 +17,27 @@
                     Contacto
                 </a>
 
-                <a href="{{ route('register') }}" class="px-4 py-2 rounded-md bg-blue-600 hover:bg-blue-700 transition">
-                    Registro
-                </a>
+                {{-- SIN SESIÓN --}}
+                @guest
+                    <a href="{{ route('register') }}" class="px-4 py-2 rounded-md bg-blue-600 hover:bg-blue-700 transition">
+                        Registro
+                    </a>
 
-                <a href="{{ route('login') }}"
-                    class="px-4 py-2 rounded-md border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white transition">
-                    Login
-                </a>
+                    <a href="{{ route('login') }}"
+                        class="px-4 py-2 rounded-md border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white transition">
+                        Login
+                    </a>
+                @endguest
+
+                {{-- CON SESIÓN --}}
+                @auth
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="px-4 py-2 rounded-md bg-red-600 hover:bg-red-700 transition">
+                            Cerrar sesión
+                        </button>
+                    </form>
+                @endauth
             </div>
 
             {{-- Mobile button --}}
@@ -47,15 +60,27 @@
                 Contacto
             </a>
 
-            <a href="{{ route('register') }}"
-                class="block text-center px-4 py-2 rounded-md bg-blue-600 hover:bg-blue-700">
-                Registro
-            </a>
+            {{-- SIN SESIÓN --}}
+            @guest
+                <a href="{{ route('register') }}" class="block text-center px-4 py-2 rounded-md bg-blue-600">
+                    Registro
+                </a>
 
-            <a href="{{ route('login') }}"
-                class="block text-center px-4 py-2 rounded-md border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white">
-                Login
-            </a>
+                <a href="{{ route('login') }}"
+                    class="block text-center px-4 py-2 rounded-md border border-blue-500 text-blue-400">
+                    Login
+                </a>
+            @endguest
+
+            {{-- CON SESIÓN --}}
+            @auth
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="w-full text-center px-4 py-2 rounded-md bg-red-600">
+                        Cerrar sesión
+                    </button>
+                </form>
+            @endauth
         </div>
     </div>
 </nav>

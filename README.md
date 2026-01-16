@@ -16,20 +16,23 @@ Aplicación e-commerce desarrollada con **Laravel**, con fines de aprendizaje.
 
 ## 📸 Capturas de pantalla
 
-### Página principal
+### Inicio (Público)
 ![Home](screenshots/home.png)
 
 ### Registro
-![Registro](screenshots/registro.png)
+![Register](screenshots/register.png)
 
 ### Login
 ![Login](screenshots/login.png)
 
-### Dashboard
+### Inicio (Cliente)
+![Home_Client](screenshots/home_client.png)
+
+### Dashboard (Admin)
 ![Dashboard](screenshots/dashboard.png)
 
-### Perfil
-![Perfil](screenshots/perfil.png)
+### Perfil (Admin)
+![Profile](screenshots/profile.png)
 
 ---
 
@@ -65,22 +68,50 @@ php artisan key:generate
 
 Para este proyecto se utiliza **SQLite** (ideal para aprendizaje).
 
-Crea el archivo `database.sqlite` dentro de la carpeta `database/`, y luego ejecuta las migraciones que ya vienen por defecto:
+Para ejecutar las migraciones que ya vienen por defecto, crea el archivo `database.sqlite` dentro de la carpeta `database/` y luego ejecuta:
 
 ```bash
 php artisan migrate
 ```
 
+### 👥 Roles de usuario
+
+La aplicación maneja roles de usuario para controlar el acceso a ciertas funcionalidades:
+
+- `client`: Usuario normal
+- `admin`: Usuario administrador (acceso al dashboard)
+
+Por defecto, todos los usuarios registrados tienen el rol `client`.
+
+### 🔑 Asignar rol administrador (dev)
+
+Para cambiar rápidamente el rol de un usuario durante el desarrollo, puedes usar Tinker.
+
+1. Abrir tinker:
+```bash
+php artisan tinker
+```
+
+2. Canbiar el rol a un usuario registrado:
+```php
+$user = App\Models\User::where('email', 'admin@email.com')->first();
+$user->role = 'admin';
+$user->save();
+```
+Esto otorgará permisos de administrador al usuario indicado.
+
+⚠️ *Este método está pensado solo para entornos de desarrollo*.
+
 ---
 
-## ⚡ Ejecutar Vite
+## ⚡ Ejecutar Vite (dev)
 
 En la `raíz` del proyecto, ejecuta:
 ```bash
 npm install # instalar dependencias
 npm run dev # ejecutar (modo dev)
 ```
-⚠️ Mantén este proceso corriendo mientras desarrollas.
+⚠️ *Mantén este proceso corriendo mientras desarrollas*.
 
 ---
 
