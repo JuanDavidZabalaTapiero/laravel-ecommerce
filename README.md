@@ -92,7 +92,7 @@ Para cambiar rápidamente el rol de un usuario durante el desarrollo, puedes usa
 php artisan tinker
 ```
 
-2. Canbiar el rol a un usuario registrado:
+2. Cambiar el rol a un usuario registrado:
 ```php
 $user = App\Models\User::where('email', 'admin@email.com')->first();
 $user->role = 'admin';
