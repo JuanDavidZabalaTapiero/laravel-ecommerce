@@ -11,9 +11,8 @@
 </head>
 
 <body class="bg-gray-100 text-gray-900">
-
     <header>
-        @include('partials.nav')
+        <x-client.nav />
     </header>
 
     <main class="max-w-7xl mx-auto px-4 py-8">

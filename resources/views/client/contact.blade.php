@@ -1,6 +1,6 @@
-@extends('layouts.layout')
+@extends('layouts.client')
 
-@section('title', 'Contacto')
+@section('title', 'Inicio')
 
 @section('content')
     <div class="max-w-xl mx-auto">
