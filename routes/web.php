@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -12,10 +13,14 @@ Route::get('/contact', function () {
     return view('client.contact');
 })->name('contact');
 
+
 // === ADMIN ===
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth', 'verified', 'admin'])->name('dashboard');
+
+Route::post('/dashboard/users', [AdminUserController::class, 'store'])->name('admin.users.store');
+
 
 // == PROFILE ==
 Route::middleware('auth')->group(function () {
